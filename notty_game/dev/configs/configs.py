@@ -46,7 +46,7 @@ class NottyGameWorkflowMixin(WinipediaWorkflow):
         """Get the step to install PySide6 dependencies."""
         return cls.get_step(
             step_func=cls.step_install_pygame_system_dependencies,
-            run="(sudo apt-get update -y && sudo apt-get install -y libsdl2-dev libfreetype6-dev) || (brew install sdl2 freetype) || (pacman -Sy --noconfirm mingw-w64-x86_64-SDL2 mingw-w64-x86_64-freetype)",  # noqa: E501
+            run="(sudo apt-get update -y && sudo apt-get install -y libsdl2-dev libfreetype6-dev) || (brew install sdl2 freetype)",  # noqa: E501
         )
 
 
