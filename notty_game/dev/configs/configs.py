@@ -33,9 +33,12 @@ class NottyGameWorkflowMixin(WinipediaWorkflow):
         """
         steps = super().steps_core_matrix_setup(python_version, repo_token=repo_token)
 
-        steps.append(
-            cls.step_install_pygame_system_dependencies(),
+        index = next(
+            i
+            for i, step in enumerate(steps)
+            if step["id"] == cls.make_id_from_func(cls.step_install_python_dependencies)
         )
+        steps.insert(index, cls.step_install_pygame_system_dependencies())
         return steps
 
     @classmethod
@@ -71,14 +74,10 @@ class ReleaseWorkflow(HealthCheckWorkflow, WinipediaReleaseWorkflow):
         steps = super().steps_release()
         # find the index of the cls.step_install_python_dependencies step and insert
         # the pyside6 dependencies step after it
-        index = (
-            next(
-                i
-                for i, step in enumerate(steps)
-                if step["id"]
-                == cls.make_id_from_func(cls.step_install_python_dependencies)
-            )
-            + 1
+        index = next(
+            i
+            for i, step in enumerate(steps)
+            if step["id"] == cls.make_id_from_func(cls.step_install_python_dependencies)
         )
         steps.insert(index, cls.step_install_pygame_system_dependencies())
         return steps
