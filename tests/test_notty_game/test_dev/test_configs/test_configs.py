@@ -20,7 +20,7 @@ class TestNottyGameWorkflowMixin:
         assert_with_msg(
             any(
                 step["id"]
-                == NottyGameWorkflowMixin.step_install_pygame_system_dependencies().get(
+                == NottyGameWorkflowMixin.step_pre_install_pygame_from_binary().get(
                     "id"
                 )
                 for step in steps
@@ -28,10 +28,10 @@ class TestNottyGameWorkflowMixin:
             "Expected install pygame system dependencies step",
         )
 
-    def test_step_install_pygame_system_dependencies(self) -> None:
+    def test_step_pre_install_pygame_from_binary(self) -> None:
         """Test method for step_install_pygame_system_dependencies."""
         # just assert that the method returns a dict
-        step = NottyGameWorkflowMixin.step_install_pygame_system_dependencies()
+        step = NottyGameWorkflowMixin.step_pre_install_pygame_from_binary()
         assert_with_msg(
             isinstance(step, dict),
             f"Expected dict, got {type(step)}",
@@ -57,7 +57,7 @@ class TestReleaseWorkflow:
         assert_with_msg(
             any(
                 step["id"]
-                == NottyGameWorkflowMixin.step_install_pygame_system_dependencies().get(
+                == NottyGameWorkflowMixin.step_pre_install_pygame_from_binary().get(
                     "id"
                 )
                 for step in steps

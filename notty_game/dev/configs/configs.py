@@ -38,14 +38,14 @@ class NottyGameWorkflowMixin(WinipediaWorkflow):
             for i, step in enumerate(steps)
             if step["id"] == cls.make_id_from_func(cls.step_install_python_dependencies)
         )
-        steps.insert(index, cls.step_install_pygame_system_dependencies())
+        steps.insert(index, cls.step_pre_install_pygame_from_binary())
         return steps
 
     @classmethod
-    def step_install_pygame_system_dependencies(cls) -> dict[str, Any]:
+    def step_pre_install_pygame_from_binary(cls) -> dict[str, Any]:
         """Get the step to install PySide6 dependencies."""
         return cls.get_step(
-            step_func=cls.step_install_pygame_system_dependencies,
+            step_func=cls.step_pre_install_pygame_from_binary,
             run="pip install pygame --only-binary=:all:",
         )
 
@@ -78,5 +78,5 @@ class ReleaseWorkflow(HealthCheckWorkflow, WinipediaReleaseWorkflow):
             for i, step in enumerate(steps)
             if step["id"] == cls.make_id_from_func(cls.step_install_python_dependencies)
         )
-        steps.insert(index, cls.step_install_pygame_system_dependencies())
+        steps.insert(index, cls.step_pre_install_pygame_from_binary())
         return steps
