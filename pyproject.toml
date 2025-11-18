@@ -12,7 +12,7 @@ dynamic = ["dependencies"]
 
 
 [project.scripts]
-notty-game = "winipedia_utils.dev.cli.cli:main"
+notty-game = "pyrig.dev.cli.cli:main"
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
@@ -22,7 +22,7 @@ include = "notty_game"
 
 [tool.poetry.dependencies]
 pygame = "*"
-winipedia-utils = "*"
+pyrig = "*"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "*"
@@ -50,6 +50,8 @@ fixable = ["ALL"]
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101"]
 [tool.mypy]
 strict = true
 warn_unreachable = true
@@ -61,3 +63,6 @@ testpaths = ["tests"]
 
 [tool.bandit]
 exclude_dirs = ["./experiment.py"]
+
+[tool.bandit.assert_used]
+skips = ["*test_*.py"]

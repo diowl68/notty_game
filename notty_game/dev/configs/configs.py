@@ -1,17 +1,17 @@
-"""Configs for winipedia_utils.
+"""Configs for pyrig.
 
 All subclasses of ConfigFile in the configs package are automatically called.
 """
 
 from typing import Any
 
-from winipedia_utils.dev.configs.workflows.base.base import (
+from pyrig.dev.configs.workflows.base.base import (
     Workflow as WinipediaWorkflow,
 )
-from winipedia_utils.dev.configs.workflows.health_check import (
+from pyrig.dev.configs.workflows.health_check import (
     HealthCheckWorkflow as WinipediaHealthCheckWorkflow,
 )
-from winipedia_utils.dev.configs.workflows.release import (
+from pyrig.dev.configs.workflows.release import (
     ReleaseWorkflow as WinipediaReleaseWorkflow,
 )
 

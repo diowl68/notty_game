@@ -245,3 +245,4 @@ activemq-data/
 .git/
 # for executing experimental code
 /experiment.py
+# pyrig stuff
