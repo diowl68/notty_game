@@ -1,17 +1,17 @@
-"""Configs for winipedia_utils.
+"""Configs for pyrig.
 
 All subclasses of ConfigFile in the configs package are automatically called.
 """
 
 from typing import Any
 
-from winipedia_utils.dev.configs.workflows.base.base import (
+from pyrig.dev.configs.workflows.base.base import (
     Workflow as WinipediaWorkflow,
 )
-from winipedia_utils.dev.configs.workflows.health_check import (
+from pyrig.dev.configs.workflows.health_check import (
     HealthCheckWorkflow as WinipediaHealthCheckWorkflow,
 )
-from winipedia_utils.dev.configs.workflows.release import (
+from pyrig.dev.configs.workflows.release import (
     ReleaseWorkflow as WinipediaReleaseWorkflow,
 )
 
@@ -24,14 +24,16 @@ class NottyGameWorkflowMixin(WinipediaWorkflow):
     """
 
     @classmethod
-    def steps_core_matrix_setup(
+    def steps_core_installed_setup(
         cls, python_version: str | None = None, *, repo_token: bool = False
     ) -> list[dict[str, Any]]:
         """Get the poetry setup steps.
 
         We need to install additional system dependencies for pyside6.
         """
-        steps = super().steps_core_matrix_setup(python_version, repo_token=repo_token)
+        steps = super().steps_core_installed_setup(
+            python_version, repo_token=repo_token
+        )
 
         index = next(
             i
@@ -66,17 +68,3 @@ class ReleaseWorkflow(HealthCheckWorkflow, WinipediaReleaseWorkflow):
     This is necessary to make pyside6 work on github actions which is a headless linux
     environment.
     """
-
-    @classmethod
-    def steps_release(cls) -> list[dict[str, Any]]:
-        """Get the release steps."""
-        steps = super().steps_release()
-        # find the index of the cls.step_install_python_dependencies step and insert
-        # the pyside6 dependencies step after it
-        index = next(
-            i
-            for i, step in enumerate(steps)
-            if step["id"] == cls.make_id_from_func(cls.step_install_python_dependencies)
-        )
-        steps.insert(index, cls.step_pre_install_pygame_from_binary())
-        return steps
