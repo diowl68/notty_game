@@ -34,8 +34,6 @@ def create_window() -> pygame.Surface:
     screen = pygame.display.set_mode((APP_WIDTH, APP_HEIGHT))
     # set the title
     pygame.display.set_caption(APP_NAME)
-    # set the icon
-    pygame.display.set_icon(pygame.image.load("notty/dev/artifacts/icon.png"))
     return screen
 
 
