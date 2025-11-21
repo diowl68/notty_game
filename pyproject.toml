@@ -1,10 +1,11 @@
 [project]
 name = "notty"
-version = "0.2.6"
+version = "0.2.14"
 description = "A simple card game called Notty using Pygame"
 authors = [
-    {name = "Winipedia",email = "win.steveker@gmx.de"},
-    {name = "Azeez",email = "abdualahmari2@gmail.com"}
+    {name = "Winipedia", email = "win.steveker@gmx.de"},
+    {name = "Azeez", email = "abdualahmari2@gmail.com"},
+    {name = "Hanmiao chen", email = "924675206@qq.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.12,<3.13"

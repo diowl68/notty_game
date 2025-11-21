@@ -60,3 +60,33 @@ def test_show_player_with_hand() -> None:
 def test_run_event_loop() -> None:
     """Test function."""
     raise NotImplementedError
+
+
+@pytest.mark.skip(reason="Won't test UI")
+def test_load_background() -> None:
+    """Test function."""
+    raise NotImplementedError
+
+
+@pytest.mark.skip(reason="Won't test UI")
+def test_get_window_size() -> None:
+    """Test function."""
+    raise NotImplementedError
+
+
+@pytest.mark.skip(reason="Won't test UI")
+def test_simulate_first_shuffle_and_deal() -> None:
+    """Test function."""
+    raise NotImplementedError
+
+
+@pytest.mark.skip(reason="Won't test UI")
+def test_get_player_display_order() -> None:
+    """Test function."""
+    raise NotImplementedError
+
+
+@pytest.mark.skip(reason="Won't test UI")
+def test_show_actions() -> None:
+    """Test function."""
+    raise NotImplementedError

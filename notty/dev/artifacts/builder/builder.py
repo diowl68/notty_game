@@ -3,7 +3,7 @@
 All subclasses of Builder in the builds package are automatically called.
 """
 
-from pathlib import Path
+from types import ModuleType
 
 from pyrig.dev.artifacts.builder.base.base import PyInstallerBuilder
 
@@ -12,6 +12,6 @@ class NottyBuilder(PyInstallerBuilder):
     """Builder for notty."""
 
     @classmethod
-    def get_add_datas(cls) -> list[tuple[Path, Path]]:
+    def get_additional_resource_pkgs(cls) -> list[ModuleType]:
         """Get the add datas."""
         return []
